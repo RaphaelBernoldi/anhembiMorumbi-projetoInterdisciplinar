@@ -1,25 +1,24 @@
 package br.com.anhembi.simcamp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.anhembi.simcamp.entity.Teste;
-import br.com.anhembi.simcamp.repository.TesteDAO;
+import br.com.anhembi.simcamp.facade.TesteFacade;
 
 @Controller
 public class IndexController {
 	
-	@Autowired
-	private TesteDAO testeDAO;
+	@Resource(name = "testeFacade")
+	private TesteFacade testeFacade;
 	
 	@RequestMapping("/")
 	public String index(){
 		Teste teste = new Teste();
 		teste.setTeste("Teste executado com sucesso");
-		Teste save = testeDAO.save(teste);
-		System.out.println(save);
-		System.out.println(testeDAO.count());
+		testeFacade.findTeste();
 		return "index";
 	}
 

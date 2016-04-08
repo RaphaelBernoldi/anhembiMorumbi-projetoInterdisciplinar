@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.anhembi.simcamp.entity.Teste;
 
-public interface TesteDAO extends JpaRepository<Teste, Long> {
+public interface TesteRepository extends JpaRepository<Teste, Long> {
 
 }
