@@ -1,0 +1,36 @@
+.jumbotron{	
+	width: 600px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+}
+
+.table{
+	margin-top:20px;
+	text-align: center;	
+
+}
+
+.table th{
+	text-align: center;
+}
+
+.formCadastro{	
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.form-control{
+		margin-top:10px;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+h3, h2{
+
+	font-weight: bold;
+}
+

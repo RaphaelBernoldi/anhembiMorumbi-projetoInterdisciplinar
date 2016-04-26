@@ -1,0 +1,17 @@
+{
+  "name": "sim-camp",
+  "homepage": "https://github.com/RaphaelBernoldi/anhembiMorumbi-projetoInterdisciplinar",
+  "authors": [
+    "Raphael Bernoldi <raphaelbernoldi@gmil.com>"
+  ],
+  "description": "Gerenciador de dependencias front-end",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

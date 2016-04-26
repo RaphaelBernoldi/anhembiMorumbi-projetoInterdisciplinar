@@ -11,6 +11,13 @@ import br.com.anhembi.simcamp.facade.TesteFacade;
 @Controller
 public class IndexController {
 	
+	/*
+	 * 
+	Controller simples destinado
+	a mostrar que a aplicação está no ar
+	
+	*/
+	
 	@Resource(name = "testeFacade")
 	private TesteFacade testeFacade;
 	
