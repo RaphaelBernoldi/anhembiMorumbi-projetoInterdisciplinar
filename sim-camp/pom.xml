@@ -25,6 +25,13 @@
 		</dependency>
 
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.2.5.RELEASE</version>
@@ -72,7 +79,7 @@
 			<artifactId>jersey-core</artifactId>
 			<version>1.19.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-servlet</artifactId>

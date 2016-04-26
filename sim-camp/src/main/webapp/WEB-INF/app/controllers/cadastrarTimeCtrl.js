@@ -1,8 +1,7 @@
-angular.module("SimuladorCampeonato").controller("cadastrarTimeCtrl", function($scope , $location){	
+angular.module("SimuladorCampeonato")
+	.controller("cadastrarTimeCtrl", function($scope){	
 
 	$scope.CadastrarTime = function(time){
-		console.log(time);
-		delete $scope.time;
-		$location.path("/partidas");
+		console.log('Cadastrando time... '+time.nome +' / ' + time.cidade);
 	}	
 });	

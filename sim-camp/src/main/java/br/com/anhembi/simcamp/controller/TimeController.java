@@ -8,7 +8,6 @@ public class TimeController {
 	
 	@RequestMapping(path="/cadastrarTime")
 	public String cadastrarTime(){
-		System.out.println("cadastrarTime");
-		return "cadastrarTime.html";
+		return "/cadastrarTime";
 	}
 }

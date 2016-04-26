@@ -12,10 +12,11 @@
 
   <context:component-scan base-package="br.com.anhembi.simcamp" />
   <mvc:annotation-driven />
-
+  <mvc:resources mapping="/resources/**" location="/WEB-INF/app/" />
+  
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/WEB-INF/app/views/"/>
-	<!--     <property name="suffix" value=".jsp"/> -->  
+    <property name="prefix" value="/WEB-INF/app/views"/>
+	<property name="suffix" value=".jsp"/>
 
   </bean>
   

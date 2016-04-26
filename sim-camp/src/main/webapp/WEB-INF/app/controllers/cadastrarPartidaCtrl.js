@@ -1,10 +1,9 @@
 angular.module("SimuladorCampeonato")
-.controller("cadastrarPartidaCtrl", function($scope, $location){	
+.controller("cadastrarPartidaCtrl", function($scope){	
 
 	$scope.CadastrarPartida = function(partida){
-		console.log(partida);
-		delete $scope.partida;
-		$location.path("/partidas");
+/*		delete $scope.partida;
+		$location.path("/partidas");*/
 	}	
 	
 });	
