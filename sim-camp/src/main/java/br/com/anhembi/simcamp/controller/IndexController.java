@@ -26,7 +26,7 @@ public class IndexController {
 		Teste teste = new Teste();
 		teste.setTeste("Teste executado com sucesso");
 		testeFacade.findTeste();
-		return "index";
+		return "/index";
 	}
 
 }

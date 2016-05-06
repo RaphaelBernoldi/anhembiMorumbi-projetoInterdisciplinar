@@ -12,7 +12,7 @@ public class TesteServiceController {
 	
 	@RequestMapping("/campeonato")
 	public String campeonato(){
-		return "testes/campeonato";
+		return "/testes/campeonato";
 	}
 	
 

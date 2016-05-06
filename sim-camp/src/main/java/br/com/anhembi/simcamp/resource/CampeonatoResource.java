@@ -5,9 +5,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import br.com.anhembi.simcamp.entity.Campeonato;
 import br.com.anhembi.simcamp.model.RespostaResquest;
 
 /*
