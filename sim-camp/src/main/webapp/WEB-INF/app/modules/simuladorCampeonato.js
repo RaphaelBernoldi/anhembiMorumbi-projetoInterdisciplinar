@@ -1,1 +1,1 @@
-angular.module("SimuladorCampeonato", []);
+angular.module('SimuladorCampeonato', []);

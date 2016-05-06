@@ -5,7 +5,8 @@
 	version="3.1">
 
 	<display-name>sim-camp</display-name>
-
+	
+	
 	<!-- Configuração do Spring MVC -->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
@@ -24,7 +25,7 @@
 
 	<!-- Configuração da API jersey rest full -->
 	<servlet>
-		<servlet-name>>Rest-Api-Anhembi</servlet-name>
+		<servlet-name>Rest-Api-Anhembi-Servlet</servlet-name>
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
@@ -37,7 +38,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>>Rest-Api-Anhembi</servlet-name>
+		<servlet-name>Rest-Api-Anhembi-Servlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 

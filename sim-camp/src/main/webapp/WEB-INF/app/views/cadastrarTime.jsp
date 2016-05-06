@@ -9,8 +9,9 @@
 	
 </head>
 <div class="jumbotron" >
-	<div class="formCadastro" ng-controller="cadastrarTimeCtrl">
+	<div class="formCadastro" ng-controller="TimeController">
 		<h3>Cadastrar novo time</h3>
+		{{respostaResquest.message}}
 		<form name="timeForm">
 			<input class="form-control" ng-model="time.nome" name="nome" type="text" placeholder="Nome do Time"/>			
 			<input class="form-control" ng-model="time.cidade" name="cidade" type="text" placeholder="Nome da Cidade"/>		
@@ -21,6 +22,7 @@
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/modules/simuladorCampeonato.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/controllers/cadastrarTimeCtrl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/services/TimeService.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/controllers/TimeController.js"></script>
 
 </html>
