@@ -4,7 +4,14 @@ angular.module('SimuladorCampeonato')
 			
 		this.cadastrarTime = function(time){
 			
-			return $http.post('/sim-camp/rest/time/save', time)
+			return $http.post('/sim-camp/time/salvar', time)
+			 .success(function(data){
+				 respostaResquest = data;
+			 });
+		}
+		
+		this.buscarTodos = function(){
+			return $http.post('/sim-camp/time/buscarTodos')
 			 .success(function(data){
 				 respostaResquest = data;
 			 });

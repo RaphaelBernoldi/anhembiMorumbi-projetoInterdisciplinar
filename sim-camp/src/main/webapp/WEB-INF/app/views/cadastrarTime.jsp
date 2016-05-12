@@ -15,8 +15,8 @@
 		<form name="timeForm">
 			<input class="form-control" ng-model="time.nome" name="nome" type="text" placeholder="Nome do Time"/>			
 			<input class="form-control" ng-model="time.cidade" name="cidade" type="text" placeholder="Nome da Cidade"/>		
-			<button class="btn btn-success btn-sm btn-block" ng-Click="CadastrarTime(time)">Cadastrar Time</button>	
-			<a  class="btn btn-danger btn-sm btn-block" href="#/partidas">voltar</a>	
+			<button class="btn btn-success btn-sm btn-block" ng-Click="CadastrarTime()">Cadastrar Time</button>	
+			<a  class="btn btn-danger btn-sm btn-block" href="/sim-camp/">voltar</a>
 		</form>
 	</div>
 </div>

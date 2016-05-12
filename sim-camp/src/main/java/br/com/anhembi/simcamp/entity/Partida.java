@@ -2,13 +2,18 @@ package br.com.anhembi.simcamp.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="PARTIDA")
 public class Partida {
 	
 	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
 	@ManyToOne

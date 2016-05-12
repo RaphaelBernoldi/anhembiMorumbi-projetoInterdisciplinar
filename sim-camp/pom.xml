@@ -43,6 +43,8 @@
 			<version>1.9.4.RELEASE</version>
 		</dependency>
 
+		<!-- <dependency> <groupId>org.glassfish.jersey.ext</groupId> <artifactId>jersey-spring3</artifactId> 
+			<version>2.22.2</version> </dependency> -->
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -69,26 +71,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.19.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-core</artifactId>
-			<version>1.19.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-servlet</artifactId>
-			<version>1.19.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.4</version>
 		</dependency>
 
 	</dependencies>
-
-
 
 	<build>
 		<finalName>sim-camp</finalName>
