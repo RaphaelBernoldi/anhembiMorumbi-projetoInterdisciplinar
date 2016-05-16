@@ -11,7 +11,9 @@
 <div class="jumbotron" >
 	<div class="formCadastro" ng-controller="TimeController">
 		<h3>Cadastrar novo time</h3>
+		
 		{{respostaResquest.message}}
+		
 		<form name="timeForm">
 			<input class="form-control" ng-model="time.nome" name="nome" type="text" placeholder="Nome do Time"/>			
 			<input class="form-control" ng-model="time.cidade" name="cidade" type="text" placeholder="Nome da Cidade"/>		

@@ -11,12 +11,21 @@
 <div class="jumbotron" >
 	<div class="formCadastro" ng-controller="PartidaController">
 		<h3>Cadastrar nova Partida</h3>
+		
+		{{respostaResquest.message}}
+		
 		<form name="PartidaForm">
-			<input class="form-control" ng-model="partida.timeMandante" type="text" placeholder="Time Mandante"/>
-			<input class="form-control" ng-model="partida.timeVisitante" type="text" placeholder="Time Visitante"/>
+			<label class="form-control" for="timeMandante">Time Mandante: </label>
+   			<select class="form-control" name="timeMandante" id="timeMandante" ng-model="partida.timeMandante" placeholder="Time Mandante">
+     			<option ng-repeat="time in respostaResquest.lsObjetosEncontrados" value="{{time.nome}}">{{time.nome}} - {{time.cidade}}</option>
+    		</select><br/>
+			<label class="form-control" for="timeVisitante">Time Visitante: </label>
+   			<select class="form-control" name="timeVisitante" id="timeVisitante" ng-model="partida.timeVisitante" placeholder="Time Visitante">
+     			<option ng-repeat="time in respostaResquest.lsObjetosEncontrados" value="{{time.nome}}">{{time.nome}} - {{time.cidade}}</option>
+    		</select>
 			<input class="form-control" ng-model="partida.golsMandante" type="text" placeholder="Gol(s) Mandante"/>
 			<input class="form-control" ng-model="partida.golsVisitante" type="text" placeholder="Gol(s) visitante"/>
-			<button class="btn btn-success btn-sm btn-block" ng-Click="CadastrarPartida(partida)">Cadastrar Partida</button>	
+			<button class="btn btn-success btn-sm btn-block" ng-Click="cadastrarPartida()">Cadastrar Partida</button>	
 			<a  class="btn btn-danger btn-sm btn-block" href="/sim-camp/">voltar</a>
 		</form>
 	</div>
