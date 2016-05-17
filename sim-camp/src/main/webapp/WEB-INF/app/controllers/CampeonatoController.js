@@ -4,7 +4,7 @@ angular.module('SimuladorCampeonato')
 	$scope.respostaResquest = {};
 	$scope.campeonato={};
 		
-	$scope.CadastrarTime = function(){
+	$scope.cadastrarCampeonato = function(){
 		var promise = CampeonatoService.cadastrarCampeonato($scope.campeonato);
 			promise.then(
 					function(response) {
