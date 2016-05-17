@@ -1,38 +1,35 @@
 package br.com.anhembi.simcamp.controller;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.anhembi.simcamp.entity.EntidadeGenerica;
-import br.com.anhembi.simcamp.entity.Time;
-import br.com.anhembi.simcamp.facade.TimeFacade;
+import br.com.anhembi.simcamp.entity.Campeonato;
+import br.com.anhembi.simcamp.facade.CampeonatoFacade;
 import br.com.anhembi.simcamp.model.RespostaResquest;
 
 @Controller
-@RequestMapping(path="/time")
-public class TimeController {
+@RequestMapping(value="/campeonato")
+public class CampeonatoController {
 	
-	@Resource
-	private TimeFacade timeFacade;
-	
-	@RequestMapping(path="/cadastrarTime")
-	public String cadastrarTime(){
-		return "/cadastrarTime";
+	@Autowired
+	private CampeonatoFacade campeonatoFacade;
+
+	@RequestMapping(path="/cadastrarCampeonato")
+	public String cadastrarCampeonato(){
+		return "/cadastrarCampeonato";
 	}
 	
+
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public @ResponseBody RespostaResquest salvarTime(@RequestBody Time time){
+	public @ResponseBody RespostaResquest salvarCampeonato(@RequestBody Campeonato campeonato){
 		RespostaResquest respostaResquest = new RespostaResquest();
 		try{
-			Time timeSaved = timeFacade.save(time);
-			respostaResquest.setMessage("Time "+timeSaved.getId()+" salvo com sucesso!");
+			respostaResquest.setObjetoEncontrado(campeonatoFacade.save(campeonato));
+			respostaResquest.setMessage("Campeonato salvo com sucesso!");
 			
 		}catch(Exception e){
 			respostaResquest.setMessage("Falha ao persistir os dados "+e.getMessage());
@@ -42,17 +39,17 @@ public class TimeController {
 	}
 	
 	@RequestMapping(path="/buscarTodos", method=RequestMethod.POST)
-	public @ResponseBody RespostaResquest buscarTimes(){
+	public @ResponseBody RespostaResquest buscarCampeonatos(){
 		RespostaResquest respostaResquest = new RespostaResquest();
 		try{
-			List<EntidadeGenerica> times = timeFacade.buscarTodos();
-			respostaResquest.setLsObjetosEncontrados(times);
-			
+			respostaResquest.setLsObjetosEncontrados(campeonatoFacade.buscarTodos());
 		}catch(Exception e){
 			respostaResquest.setMessage("Falha ao buscar os dados "+e.getMessage());
 			e.printStackTrace();
 		}
 		return respostaResquest;
 	}
+	
+	
 	
 }

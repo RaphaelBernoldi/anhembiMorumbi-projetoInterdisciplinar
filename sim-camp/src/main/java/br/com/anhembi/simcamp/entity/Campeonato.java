@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CAMPEONATO")
-public class Campeonato {
+public class Campeonato extends EntidadeGenerica {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

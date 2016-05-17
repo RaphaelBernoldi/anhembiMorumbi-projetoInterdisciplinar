@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PARTIDA")
-public class Partida {
+public class Partida extends EntidadeGenerica{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
