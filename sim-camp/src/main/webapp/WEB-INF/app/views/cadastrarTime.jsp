@@ -16,7 +16,7 @@
 		
 		<form name="timeForm">
 			<label class="form-control" for="campeonato">Campeonato: </label>
-   			<select class="form-control" name="campeonato" id="campeonato" ng-model="campeonato.id" placeholder="Time Mandante">
+   			<select class="form-control" name="campeonato" id="campeonato" ng-model="idCampeonato" placeholder="Time Mandante">
      			<option ng-repeat="campeonato in campeonatos" value="{{campeonato.id}}">{{campeonato.nome}}</option>
     		</select><br/>
 			<input class="form-control" ng-model="time.nome" name="nome" type="text" placeholder="Nome do Time"/>			

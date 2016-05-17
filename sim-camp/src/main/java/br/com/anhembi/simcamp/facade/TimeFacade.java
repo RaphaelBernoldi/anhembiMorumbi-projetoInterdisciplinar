@@ -7,7 +7,7 @@ import br.com.anhembi.simcamp.entity.Time;
 
 public interface TimeFacade {
 	
-	Time save(Time time);
+	Time save(Time time, Long idCampeonato);
 	List<EntidadeGenerica>buscarTodos();
 
 }

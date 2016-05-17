@@ -1,20 +1,35 @@
 angular.module('SimuladorCampeonato')
-	.controller('PartidaController', function($scope, TimeService, PartidaService){	
+	.controller('PartidaController', function($scope, TimeService, PartidaService, CampeonatoService){	
 		
 	$scope.respostaResquest = {};
 	$scope.partida={timeMandante:"Selecione", timeVisitante:"Selecione"};
-	
-	
+	$scope.times=[];
+	$scope.campeonatos=[];
 	
 	init();
 	
 	function init(){
+		buscarTimes();
+		buscarCampeonatos();
+		}
+	
+	
+	function buscarTimes(){
 		var promise = TimeService.buscarTodos();
 		promise.then(function(response) {
 					console.log(response);
-					$scope.respostaResquest = response.data;
+					$scope.times = response.data.lsObjetosEncontrados;
 					});
-		}
+	}
+	
+	function buscarCampeonatos() {		
+		var promise = CampeonatoService.buscarTodos();
+		promise.then(
+				function(response) {
+					console.log(response);
+					$scope.campeonatos = response.data.lsObjetosEncontrados;
+					});
+	}
 	
 	
 	$scope.cadastrarPartida = function(){

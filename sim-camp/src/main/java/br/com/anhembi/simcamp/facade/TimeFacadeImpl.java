@@ -18,16 +18,24 @@ public class TimeFacadeImpl implements TimeFacade {
 	@Resource
 	private TimeRepository timeRepository;
 	
+	@Resource
+	private CampeonatoFacade campeonatoFacade;
+	
 	@Transactional
 	@Override
-	public Time save(Time time) {
+	public Time save(Time time, Long idCampeonato) {
 		try{
-		return timeRepository.save(time);
+		
+			Time timeSalvo = timeRepository.save(time);
+			campeonatoFacade.addTime(idCampeonato, timeSalvo);
+			return timeSalvo;
+			
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
 		}
 	}
+	
 
 	@Override
 	@Transactional

@@ -4,6 +4,7 @@ angular.module('SimuladorCampeonato')
 	$scope.respostaResquest = {};
 	$scope.time={};
 	$scope.campeonatos = [];
+	$scope.idCampeonato = 0;
 	
 	init();
 	
@@ -21,10 +22,11 @@ angular.module('SimuladorCampeonato')
 	}
 		
 	$scope.CadastrarTime = function(){
-		var promise = TimeService.cadastrarTime($scope.time);
+		var promise = TimeService.cadastrarTime($scope.time, $scope.idCampeonato);
 			promise.then(
 					function(response) {
 						$scope.respostaResquest = response.data;
 						});
 	}	
+	
 });	

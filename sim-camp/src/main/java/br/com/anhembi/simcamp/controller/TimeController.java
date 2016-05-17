@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +28,12 @@ public class TimeController {
 		return "/cadastrarTime";
 	}
 	
-	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public @ResponseBody RespostaResquest salvarTime(@RequestBody Time time){
+	@RequestMapping(path="/salvar/{idCampeonato}", method=RequestMethod.POST)
+	public @ResponseBody RespostaResquest salvarTime(@RequestBody Time time, @PathVariable(value="idCampeonato") Long idCampeonato){
 		RespostaResquest respostaResquest = new RespostaResquest();
 		try{
-			Time timeSaved = timeFacade.save(time);
-			respostaResquest.setMessage("Time "+timeSaved.getId()+" salvo com sucesso!");
+			Time timeSalvo = timeFacade.save(time, idCampeonato);
+			respostaResquest.setMessage("Time "+timeSalvo.getId()+" salvo com sucesso!");
 			
 		}catch(Exception e){
 			respostaResquest.setMessage("Falha ao persistir os dados "+e.getMessage());
