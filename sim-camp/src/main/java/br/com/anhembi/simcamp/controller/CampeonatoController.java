@@ -1,6 +1,7 @@
 package br.com.anhembi.simcamp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +43,9 @@ public class CampeonatoController {
 	public @ResponseBody RespostaResquest buscarCampeonatos(){
 		RespostaResquest respostaResquest = new RespostaResquest();
 		try{
+			
 			respostaResquest.setLsObjetosEncontrados(campeonatoFacade.buscarTodos());
+
 		}catch(Exception e){
 			respostaResquest.setMessage("Falha ao buscar os dados "+e.getMessage());
 			e.printStackTrace();

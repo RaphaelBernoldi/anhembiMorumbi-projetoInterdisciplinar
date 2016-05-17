@@ -15,6 +15,10 @@
 		{{respostaResquest.message}}
 		
 		<form name="timeForm">
+			<label class="form-control" for="campeonato">Campeonato: </label>
+   			<select class="form-control" name="campeonato" id="campeonato" ng-model="campeonato.id" placeholder="Time Mandante">
+     			<option ng-repeat="campeonato in campeonatos" value="{{campeonato.id}}">{{campeonato.nome}}</option>
+    		</select><br/>
 			<input class="form-control" ng-model="time.nome" name="nome" type="text" placeholder="Nome do Time"/>			
 			<input class="form-control" ng-model="time.cidade" name="cidade" type="text" placeholder="Nome da Cidade"/>		
 			<button class="btn btn-success btn-sm btn-block" ng-Click="CadastrarTime()">Cadastrar Time</button>	
@@ -24,6 +28,7 @@
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/modules/simuladorCampeonato.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/services/CampeonatoService.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/services/TimeService.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/controllers/TimeController.js"></script>
 

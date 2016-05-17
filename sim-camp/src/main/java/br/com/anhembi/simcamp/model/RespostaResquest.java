@@ -13,7 +13,9 @@ import br.com.anhembi.simcamp.entity.EntidadeGenerica;
 public class RespostaResquest {
 	
 	private String message;
+	
 	private EntidadeGenerica objetoEncontrado;
+	
 	private List<EntidadeGenerica>lsObjetosEncontrados;
 
 	public String getMessage() {
