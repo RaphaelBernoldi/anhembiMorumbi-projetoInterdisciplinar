@@ -21,11 +21,11 @@
     		</select><br/>
 			<label class="form-control" for="timeMandante">Time Mandante: </label>
    			<select class="form-control" name="timeMandante" id="timeMandante" ng-model="partida.timeMandante" placeholder="Time Mandante">
-     			<option ng-repeat="time in times" value="{{time.nome}}">{{time.nome}} - {{time.cidade}}</option>
+     			<option ng-repeat="time in times" value="{{time}}">{{time.nome}} - {{time.cidade}}</option>
     		</select><br/>
 			<label class="form-control" for="timeVisitante">Time Visitante: </label>
    			<select class="form-control" name="timeVisitante" id="timeVisitante" ng-model="partida.timeVisitante" placeholder="Time Visitante">
-     			<option ng-repeat="time in times" value="{{time.nome}}">{{time.nome}} - {{time.cidade}}</option>
+     			<option ng-repeat="time in times" value="{{time}}">{{time.nome}} - {{time.cidade}}</option>
     		</select>
 			<input class="form-control" ng-model="partida.golsMandante" type="text" placeholder="Gol(s) Mandante"/>
 			<input class="form-control" ng-model="partida.golsVisitante" type="text" placeholder="Gol(s) visitante"/>

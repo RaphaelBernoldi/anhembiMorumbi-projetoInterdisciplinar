@@ -2,6 +2,7 @@ package br.com.anhembi.simcamp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,9 +24,10 @@ public class PartidaController {
 		return "/cadastrarPartida";
 	}
 
-	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public @ResponseBody RespostaResquest salvarPartida(@RequestBody Partida partida){
+	@RequestMapping(path="/salvar/{idCampeonato}", method=RequestMethod.POST)
+	public @ResponseBody RespostaResquest salvarPartida(@RequestBody Partida partida, @PathVariable(value="idCampeonato") Long idCampeonato){
 		RespostaResquest respostaResquest = new RespostaResquest();
+		System.out.println("idCampeonato = "+idCampeonato);
 		try{
 			respostaResquest.setObjetoEncontrado(partidaFacade.save(partida));
 			respostaResquest.setMessage("Partida salva com sucesso");

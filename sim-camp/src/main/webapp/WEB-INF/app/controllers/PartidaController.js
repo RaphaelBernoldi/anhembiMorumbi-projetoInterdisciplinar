@@ -5,6 +5,7 @@ angular.module('SimuladorCampeonato')
 	$scope.partida={timeMandante:"Selecione", timeVisitante:"Selecione"};
 	$scope.times=[];
 	$scope.campeonatos=[];
+	$scope.idCampeonato=0;
 	
 	init();
 	
@@ -35,7 +36,7 @@ angular.module('SimuladorCampeonato')
 	$scope.cadastrarPartida = function(){
 		var valido = validaPartidas();
 		if(valido){
-		var promise = PartidaService.cadastrarPartida($scope.partida);
+		var promise = PartidaService.cadastrarPartida($scope.partida, $scope.idCampeonato);
 			promise.then(function(response) {
 						$scope.respostaResquest = response.data;
 						});
