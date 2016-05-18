@@ -30,6 +30,7 @@ public class Partida extends EntidadeGenerica{
 	
 	@Column
 	private Integer golsVisitante;
+	
 	public Long getId() {
 		return id;
 	}

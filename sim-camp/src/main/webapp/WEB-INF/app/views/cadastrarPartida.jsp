@@ -16,16 +16,16 @@
 		
 		<form name="PartidaForm">
 			<label class="form-control" for="campeonato">Campeonato: </label>
-   			<select class="form-control" name="campeonato" id="campeonato" ng-model="idCampeonato" placeholder="Time Mandante">
+   			<select class="form-control" name="campeonato" id="campeonato" ng-model="partida.idCampeonato" placeholder="Time Mandante">
      			<option ng-repeat="campeonato in campeonatos" value="{{campeonato.id}}">{{campeonato.nome}}</option>
     		</select><br/>
 			<label class="form-control" for="timeMandante">Time Mandante: </label>
-   			<select class="form-control" name="timeMandante" id="timeMandante" ng-model="partida.timeMandante" placeholder="Time Mandante">
-     			<option ng-repeat="time in times" value="{{time}}">{{time.nome}} - {{time.cidade}}</option>
+   			<select class="form-control" name="timeMandante" id="timeMandante" ng-model="partida.idTimeMandante" placeholder="Time Mandante">
+     			<option ng-repeat="time in times" value="{{time.id}}">{{time.nome}} - {{time.cidade}}</option>
     		</select><br/>
 			<label class="form-control" for="timeVisitante">Time Visitante: </label>
-   			<select class="form-control" name="timeVisitante" id="timeVisitante" ng-model="partida.timeVisitante" placeholder="Time Visitante">
-     			<option ng-repeat="time in times" value="{{time}}">{{time.nome}} - {{time.cidade}}</option>
+   			<select class="form-control" name="timeVisitante" id="timeVisitante" ng-model="partida.idTimeVisitante" placeholder="Time Visitante">
+     			<option ng-repeat="time in times" value="{{time.id}}">{{time.nome}} - {{time.cidade}}</option>
     		</select>
 			<input class="form-control" ng-model="partida.golsMandante" type="text" placeholder="Gol(s) Mandante"/>
 			<input class="form-control" ng-model="partida.golsVisitante" type="text" placeholder="Gol(s) visitante"/>

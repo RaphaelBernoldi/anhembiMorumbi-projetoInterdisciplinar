@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.anhembi.simcamp.entity.Partida;
 import br.com.anhembi.simcamp.facade.PartidaFacade;
+import br.com.anhembi.simcamp.model.PartidaRequest;
 import br.com.anhembi.simcamp.model.RespostaResquest;
 
 @Controller
@@ -24,13 +25,14 @@ public class PartidaController {
 		return "/cadastrarPartida";
 	}
 
-	@RequestMapping(path="/salvar/{idCampeonato}", method=RequestMethod.POST)
-	public @ResponseBody RespostaResquest salvarPartida(@RequestBody Partida partida, @PathVariable(value="idCampeonato") Long idCampeonato){
+	@RequestMapping(path="/salvar", method=RequestMethod.POST)
+	public @ResponseBody RespostaResquest salvarPartida(@RequestBody PartidaRequest partidaRequest){
 		RespostaResquest respostaResquest = new RespostaResquest();
-		System.out.println("idCampeonato = "+idCampeonato);
+		System.out.println("idCampeonato = "+partidaRequest.getIdCampeonato());
 		try{
-			respostaResquest.setObjetoEncontrado(partidaFacade.save(partida));
-			respostaResquest.setMessage("Partida salva com sucesso");
+			Partida save = partidaFacade.save(partidaRequest);
+			respostaResquest.setObjetoEncontrado(save);
+			respostaResquest.setMessage("Partida "+save.getId()+" salva com sucesso");
 			
 		}catch(Exception e){
 			respostaResquest.setMessage("Falha ao persistir os dados "+e.getMessage());

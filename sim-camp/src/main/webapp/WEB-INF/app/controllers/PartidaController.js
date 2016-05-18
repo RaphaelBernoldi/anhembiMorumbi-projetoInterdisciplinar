@@ -36,7 +36,8 @@ angular.module('SimuladorCampeonato')
 	$scope.cadastrarPartida = function(){
 		var valido = validaPartidas();
 		if(valido){
-		var promise = PartidaService.cadastrarPartida($scope.partida, $scope.idCampeonato);
+			console.log($scope.partida);
+		var promise = PartidaService.cadastrarPartida($scope.partida);
 			promise.then(function(response) {
 						$scope.respostaResquest = response.data;
 						});
@@ -45,7 +46,7 @@ angular.module('SimuladorCampeonato')
 	}
 	
 	function validaPartidas(){
-		if($scope.partida.timeMandante == $scope.partida.timeVisitante){
+		if($scope.partida.idTimeMandante == $scope.partida.idTimeVisitante){
 			$scope.respostaResquest.message = 'Os times devem ser diferentes';
 			return false;
 		}
