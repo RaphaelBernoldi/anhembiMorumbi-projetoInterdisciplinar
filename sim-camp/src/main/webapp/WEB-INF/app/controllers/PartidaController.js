@@ -6,6 +6,7 @@ angular.module('SimuladorCampeonato')
 	$scope.times=[];
 	$scope.campeonatos=[];
 	$scope.idCampeonato=0;
+	$scope.partidas=[];
 	
 	init();
 	

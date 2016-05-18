@@ -1,10 +1,13 @@
 package br.com.anhembi.simcamp.facade;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.anhembi.simcamp.entity.Campeonato;
 import br.com.anhembi.simcamp.entity.Partida;
 import br.com.anhembi.simcamp.model.PartidaRequest;
 import br.com.anhembi.simcamp.repository.CampeonatoRepository;
@@ -34,6 +37,12 @@ public class PartidaFacadeImpl implements PartidaFacade{
 		partida.setTimeVisitante(timeRepository.findOne(partidaRequest.getIdTimeVisitante()));
 		return partidaRepository.save(partida);
 		
+	}
+
+	@Override
+	@Transactional
+	public List<Partida> buscarPartidasPorCampeonato(Campeonato campeonato) {
+		return partidaRepository.findPartidaByCampeonato(campeonato);
 	}
 
 }

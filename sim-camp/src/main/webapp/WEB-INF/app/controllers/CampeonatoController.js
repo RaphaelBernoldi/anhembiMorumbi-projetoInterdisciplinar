@@ -2,9 +2,8 @@ angular.module('SimuladorCampeonato')
 	.controller('CampeonatoController', function($scope, CampeonatoService){	
 		
 	$scope.respostaResquest = {};
-	$scope.campeonato={
-			
-	};
+	$scope.campeonato={};
+	$scope.campeonatos=[];
 		
 	$scope.cadastrarCampeonato = function(){
 		if(validaCadastro()){

@@ -4,5 +4,6 @@
 <a href="time/cadastrarTime">Cadastrar Time</a>
 <a href="partida/cadastrarPartida">Cadastrar Partida</a>
 <a href="campeonato/cadastrarCampeonato">Cadastrar Campeonato</a>
+<a href="#">Partidas</a>
 </body>
 </html>
