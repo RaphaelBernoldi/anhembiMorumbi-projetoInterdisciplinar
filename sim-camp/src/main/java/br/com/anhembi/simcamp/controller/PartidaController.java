@@ -2,7 +2,6 @@ package br.com.anhembi.simcamp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +22,11 @@ public class PartidaController {
 	@RequestMapping(path="/cadastrarPartida")
 	public String cadastrarPartida(){
 		return "/cadastrarPartida";
+	}
+	
+	@RequestMapping(path="/listaPartidas")
+	public String listaPartidas(){
+		return "/listaPartidas";
 	}
 
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)

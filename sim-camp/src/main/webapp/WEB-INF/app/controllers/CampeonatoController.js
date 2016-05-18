@@ -16,6 +16,9 @@ angular.module('SimuladorCampeonato')
 		}
 	}	
 	
+	
+	
+	
 	function validaCadastro(){
 		if($scope.campeonato.nome == null || $scope.campeonato.nome == ''){
 			$scope.respostaResquest.message = 'O nome do campeonato é obrigatório';

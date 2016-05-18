@@ -1,9 +1,22 @@
 <html>
 <body>
 <h2>Sim-Camp está no ar!</h2>
-<a href="time/cadastrarTime">Cadastrar Time</a>
-<a href="partida/cadastrarPartida">Cadastrar Partida</a>
-<a href="campeonato/cadastrarCampeonato">Cadastrar Campeonato</a>
-<a href="#">Partidas</a>
+<ul>
+	<li>
+	 	<a href="time/cadastrarTime">Cadastrar Time</a>
+	</li>
+	<li>
+		<a href="partida/cadastrarPartida">Cadastrar Partida</a>
+	</li>
+	<li>
+		<a href="campeonato/cadastrarCampeonato">Cadastrar Campeonato</a>
+	</li>
+	<li>
+		<a href="partida/listaPartidas">Partidas</a>
+	</li>
+	<li>
+		<a href="#">Ranking</a>
+	</li>
+</ul>
 </body>
 </html>

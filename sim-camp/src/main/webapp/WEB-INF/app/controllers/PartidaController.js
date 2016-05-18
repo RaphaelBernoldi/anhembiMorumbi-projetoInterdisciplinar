@@ -10,6 +10,24 @@ angular.module('SimuladorCampeonato')
 	
 	init();
 	
+	$scope.cadastrarPartida = function(){
+		var valido = validaPartidas();
+		if(valido){
+			console.log($scope.partida);
+		var promise = PartidaService.cadastrarPartida($scope.partida);
+			promise.then(function(response) {
+						$scope.respostaResquest = response.data;
+						});
+		}
+	}
+	
+	$scope.busaPartidasDoCampeonato = function(){
+		var promise = PartidaService.cadastrarPartida($scope.idCampeonato);
+		promise.then(function(response) {
+					$scope.partidas = response.data.lsObjetosEncontrados;
+					});
+	}
+	
 	function init(){
 		buscarTimes();
 		buscarCampeonatos();
@@ -34,17 +52,6 @@ angular.module('SimuladorCampeonato')
 	}
 	
 	
-	$scope.cadastrarPartida = function(){
-		var valido = validaPartidas();
-		if(valido){
-			console.log($scope.partida);
-		var promise = PartidaService.cadastrarPartida($scope.partida);
-			promise.then(function(response) {
-						$scope.respostaResquest = response.data;
-						});
-		
-		}
-	}
 	
 	function validaPartidas(){
 		if($scope.partida.idTimeMandante == $scope.partida.idTimeVisitante){
