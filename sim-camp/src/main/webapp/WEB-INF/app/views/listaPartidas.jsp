@@ -19,14 +19,14 @@
   				<table ng-show="partidas.length > 0" class="table table-striped table-bordered">
 					<tr>
 						<th>Time Mandante</th>
-						<th>Time Visitante</th>
 						<th>Gols Mandante</th>
+						<th>Time Visitante</th>
 						<th>Gols Visitante</th>
 					</tr>
 					<tr ng-repeat="partida in partidas">
 						<td>{{partida.timeMandante.nome}}</td>
-						<td>{{partida.timeVisitante.nome}}</td>
 						<td>{{partida.golsMandante}}</td>
+						<td>{{partida.timeVisitante.nome}}</td>
 						<td>{{partida.golsVisitante}}</td>
 				</table>
   					

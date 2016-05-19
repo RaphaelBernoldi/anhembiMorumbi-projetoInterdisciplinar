@@ -1,5 +1,6 @@
 package br.com.anhembi.simcamp.facade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.anhembi.simcamp.entity.Campeonato;
+import br.com.anhembi.simcamp.entity.EntidadeGenerica;
 import br.com.anhembi.simcamp.entity.Partida;
 import br.com.anhembi.simcamp.model.PartidaRequest;
 import br.com.anhembi.simcamp.repository.CampeonatoRepository;
@@ -41,8 +43,15 @@ public class PartidaFacadeImpl implements PartidaFacade{
 
 	@Override
 	@Transactional
-	public List<Partida> buscarPartidasPorCampeonato(Campeonato campeonato) {
-		return partidaRepository.findPartidaByCampeonato(campeonato);
+	public List<EntidadeGenerica> buscarPartidasPorCampeonato(Long idCampeonato) {
+		Campeonato campeonato = campeonatoRepository.findById(idCampeonato);
+		 List<Partida> partidas = partidaRepository.findPartidaByCampeonato(campeonato);
+		 List<EntidadeGenerica>lsObjetosEncontrados = new ArrayList<>();
+		 for (Partida partida : partidas) {
+			 lsObjetosEncontrados.add(partida);
+		}
+		
+		return lsObjetosEncontrados;
 	}
 
 }

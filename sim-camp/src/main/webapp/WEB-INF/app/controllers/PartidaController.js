@@ -22,7 +22,7 @@ angular.module('SimuladorCampeonato')
 	}
 	
 	$scope.busaPartidasDoCampeonato = function(){
-		var promise = PartidaService.cadastrarPartida($scope.idCampeonato);
+		var promise = PartidaService.busaPartidasDoCampeonato($scope.idCampeonato);
 		promise.then(function(response) {
 					$scope.partidas = response.data.lsObjetosEncontrados;
 					});

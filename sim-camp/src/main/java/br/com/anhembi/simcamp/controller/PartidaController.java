@@ -1,5 +1,7 @@
 package br.com.anhembi.simcamp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.anhembi.simcamp.entity.EntidadeGenerica;
 import br.com.anhembi.simcamp.entity.Partida;
 import br.com.anhembi.simcamp.facade.PartidaFacade;
 import br.com.anhembi.simcamp.model.PartidaRequest;
@@ -27,6 +30,15 @@ public class PartidaController {
 	@RequestMapping(path="/listaPartidas")
 	public String listaPartidas(){
 		return "/listaPartidas";
+	}
+	
+	@RequestMapping(path="/buscar",method=RequestMethod.POST)
+	public @ResponseBody RespostaResquest buscarPartidas(@RequestBody Long idCampeonato){
+		RespostaResquest respostaResquest = new RespostaResquest();
+		List<EntidadeGenerica> lsObjetosEncontrados = partidaFacade.buscarPartidasPorCampeonato(idCampeonato);
+		respostaResquest.setLsObjetosEncontrados(lsObjetosEncontrados);
+
+		return respostaResquest;
 	}
 
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)

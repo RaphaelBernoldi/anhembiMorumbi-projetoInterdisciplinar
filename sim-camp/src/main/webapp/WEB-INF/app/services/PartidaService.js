@@ -11,7 +11,7 @@ angular.module('SimuladorCampeonato')
 		}
 		
 		this.busaPartidasDoCampeonato = function(idCampeonato){
-			console.log(partida);
+			console.log('idCampeonato = '+idCampeonato);
 			return $http.post('/sim-camp/partida/buscar', idCampeonato)
 			 .success(function(data){
 				 respostaResquest = data;

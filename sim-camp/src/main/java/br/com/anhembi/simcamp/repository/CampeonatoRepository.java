@@ -11,5 +11,7 @@ a realizar apenas acesso ao banco e busca de dados
 */
 
 public interface CampeonatoRepository extends JpaRepository<Campeonato, Long>{
+	
+	Campeonato findById(Long id);
 
 }
