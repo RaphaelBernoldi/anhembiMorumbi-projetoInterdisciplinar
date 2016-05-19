@@ -1,10 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="SimuladorCampeonato">
+<head>
+	<title>
+		Lista de Partidas
+	</title>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/app.css" />
+</head>
+
 <div class="jumbotron" >
-	<h3>ColocaÃ§Ã£o</h3>
+	<h3>Colocação</h3>
 	<table ng-show="colocacoes.length > 0" class="table table-striped table-bordered">
 		<tr>
-			<th>PontuaÃ§Ã£o</th>
+			<th>Pontuação</th>
 			<th>Time</th>
-			<th>VitÃ³rias</th>
+			<th>Vitórias</th>
 			<th>Empates</th>
 			<th>Derrotas</th>
 			<th>Saldo De Gols</th>
@@ -18,5 +27,13 @@
 			<td>{{colocacao.gols}}</td>
 		</tr>
 	</table>
-<a  class="btn btn-danger btn-sm btn-block" href="#/partidas">voltar</a>
+	<a  class="btn btn-danger btn-sm btn-block" href="#/partidas">voltar</a>
 </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/modules/simuladorCampeonato.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/services/CampeonatoService.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/services/TimeService.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/services/PartidaService.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/controllers/PartidaController.js"></script>
+</html>

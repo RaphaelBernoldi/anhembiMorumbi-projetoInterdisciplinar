@@ -44,7 +44,6 @@ public class PartidaController {
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
 	public @ResponseBody RespostaResquest salvarPartida(@RequestBody PartidaRequest partidaRequest){
 		RespostaResquest respostaResquest = new RespostaResquest();
-		System.out.println("idCampeonato = "+partidaRequest.getIdCampeonato());
 		try{
 			Partida save = partidaFacade.save(partidaRequest);
 			respostaResquest.setObjetoEncontrado(save);
