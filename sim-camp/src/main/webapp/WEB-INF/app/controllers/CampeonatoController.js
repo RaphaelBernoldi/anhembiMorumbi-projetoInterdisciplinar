@@ -4,6 +4,14 @@ angular.module('SimuladorCampeonato')
 	$scope.respostaResquest = {};
 	$scope.campeonato={};
 	$scope.campeonatos=[];
+	$scope.resultados=[];
+	
+	init();
+	
+	function init(){
+		buscarCampeonatos();
+		console.log($scope.campeonatos);
+	}
 		
 	$scope.cadastrarCampeonato = function(){
 		if(validaCadastro()){
@@ -16,8 +24,25 @@ angular.module('SimuladorCampeonato')
 		}
 	}	
 	
+	$scope.buscaResultadosPorCampeonado = function(){
+		var promise = CampeonatoService.buscaResultadosPorCampeonado($scope.campeonato);
+		console.log($scope.campeonato);
+			promise.then(
+					function(response) {
+						console.log(response.data);
+						$scope.resultados = response.data;
+						});
+	}
 	
 	
+	function buscarCampeonatos() {		
+		var promise = CampeonatoService.buscarTodos();
+		promise.then(
+				function(response) {
+					console.log(response);
+					$scope.campeonatos = response.data.lsObjetosEncontrados;
+					});
+	}
 	
 	function validaCadastro(){
 		if($scope.campeonato.nome == null || $scope.campeonato.nome == ''){

@@ -15,7 +15,7 @@
 		<a href="partida/listaPartidas">Partidas</a>
 	</li>
 	<li>
-		<a href="#">Ranking</a>
+		<a href="campeonato/mostrarDados">Ranking</a>
 	</li>
 </ul>
 </body>

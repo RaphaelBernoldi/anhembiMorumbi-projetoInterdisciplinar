@@ -1,5 +1,7 @@
 package br.com.anhembi.simcamp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.anhembi.simcamp.entity.Campeonato;
+import br.com.anhembi.simcamp.entity.EntidadeGenerica;
 import br.com.anhembi.simcamp.facade.CampeonatoFacade;
 import br.com.anhembi.simcamp.model.RespostaResquest;
 
@@ -21,6 +24,10 @@ public class CampeonatoController {
 	@RequestMapping(path="/cadastrarCampeonato")
 	public String cadastrarCampeonato(){
 		return "/cadastrarCampeonato";
+	}
+	@RequestMapping(path="/mostrarDados")
+	public String mostrarDados(){
+		return "/mostrarDados";
 	}
 	
 
@@ -46,6 +53,20 @@ public class CampeonatoController {
 			respostaResquest.setLsObjetosEncontrados(campeonatoFacade.buscarTodos());
 
 		}catch(Exception e){
+			respostaResquest.setMessage("Falha ao buscar os dados "+e.getMessage());
+			e.printStackTrace();
+		}
+		return respostaResquest;
+	}
+	
+	@RequestMapping(path="/buscarResultados", method=RequestMethod.POST)
+	public @ResponseBody RespostaResquest buscaResultados(@RequestBody Long idCampeonato){
+		RespostaResquest respostaResquest = new RespostaResquest();
+		try{
+			List<EntidadeGenerica> resultados = campeonatoFacade.buscarResultadosPorIDCampeonato(idCampeonato);
+			respostaResquest.setLsObjetosEncontrados(resultados);
+			
+		}catch (Exception e) {
 			respostaResquest.setMessage("Falha ao buscar os dados "+e.getMessage());
 			e.printStackTrace();
 		}

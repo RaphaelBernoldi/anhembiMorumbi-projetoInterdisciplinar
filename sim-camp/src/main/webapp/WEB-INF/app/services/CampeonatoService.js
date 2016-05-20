@@ -17,6 +17,14 @@ angular.module('SimuladorCampeonato')
 			 });
 		}
 		
+		this.buscaResultadosPorCampeonado = function(campeonato){
+			return $http.post('/sim-camp/campeonato/buscarResultados', campeonato.id)
+			 .success(function(data){
+				 respostaResquest = data;
+			 });
+			
+		}
+		
 		
 	});
 

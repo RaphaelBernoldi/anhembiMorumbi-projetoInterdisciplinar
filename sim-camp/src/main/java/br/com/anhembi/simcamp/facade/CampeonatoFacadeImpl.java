@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.anhembi.simcamp.entity.Campeonato;
 import br.com.anhembi.simcamp.entity.EntidadeGenerica;
+import br.com.anhembi.simcamp.entity.Resultado;
 import br.com.anhembi.simcamp.entity.Time;
 import br.com.anhembi.simcamp.repository.CampeonatoRepository;
 
@@ -39,6 +40,19 @@ public class CampeonatoFacadeImpl implements CampeonatoFacade {
 	public void addTime(Long idCampeonato,Time time){
 		Campeonato campeonato = campeonatoRepository.findOne(idCampeonato);
 		campeonato.getTimes().add(time);
+	}
+	
+	@Override
+	@Transactional
+	public List<EntidadeGenerica> buscarResultadosPorIDCampeonato(Long idCampeonato){
+		Campeonato campeonato = campeonatoRepository.findOne(idCampeonato);
+		List<EntidadeGenerica>resultados = new ArrayList<>();
+		for (Resultado resultado : campeonato.getResultados()) {
+			resultados.add(resultado);
+		}
+		return resultados;
+		 
+		 
 	}
 
 }

@@ -35,7 +35,7 @@ public class Campeonato extends EntidadeGenerica implements Serializable {
 	@OneToMany(fetch=FetchType.EAGER)
 	private List<Partida>partidas;
 	
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Resultado>resultados;
 
 	public Long getId() {
