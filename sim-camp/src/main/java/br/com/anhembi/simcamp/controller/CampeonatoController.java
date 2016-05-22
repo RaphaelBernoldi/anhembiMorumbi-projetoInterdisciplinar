@@ -2,7 +2,9 @@ package br.com.anhembi.simcamp.controller;
 
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +40,9 @@ public class CampeonatoController {
 			respostaResquest.setObjetoEncontrado(campeonatoFacade.save(campeonato));
 			respostaResquest.setMessage("Campeonato salvo com sucesso!");
 			
-		}catch(Exception e){
-			respostaResquest.setMessage("Falha ao persistir os dados "+e.getMessage());
-			e.printStackTrace();
+		}catch (DataIntegrityViolationException e) {
+			respostaResquest.setMessage("O campeonato "+campeonato.getNome()+" ja esta cadastrado");
+
 		}
 		return respostaResquest;
 	}

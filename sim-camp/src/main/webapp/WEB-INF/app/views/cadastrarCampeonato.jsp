@@ -15,7 +15,7 @@
 		{{respostaResquest.message}}
 		
 		<form name="CampeonatoForm">
-			<input class="form-control" ng-model="campeonato.nome" type="text" placeholder="Nome Campeontato"/><br/>
+			<input class="form-control" ng-model="campeonato.nome" type="text" placeholder="Nome Campeonato"/><br/>
 			<button class="btn btn-success btn-sm btn-block" ng-Click="cadastrarCampeonato()">Cadastrar Campeonato</button>
 			<a  class="btn btn-danger btn-sm btn-block" href="/sim-camp/">voltar</a>
 		</form>

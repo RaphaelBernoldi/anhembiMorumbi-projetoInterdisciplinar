@@ -20,7 +20,7 @@ public class Time extends EntidadeGenerica implements Serializable {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(unique=true)
 	private String nome;
 	
 	@Column

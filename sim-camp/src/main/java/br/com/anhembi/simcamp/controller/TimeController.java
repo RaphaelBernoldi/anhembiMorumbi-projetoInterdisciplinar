@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,9 +36,8 @@ public class TimeController {
 			Time timeSalvo = timeFacade.save(time, idCampeonato);
 			respostaResquest.setMessage("Time "+timeSalvo.getId()+" salvo com sucesso!");
 			
-		}catch(Exception e){
-			respostaResquest.setMessage("Falha ao persistir os dados "+e.getMessage());
-			e.printStackTrace();
+		}catch(DataIntegrityViolationException e){
+			respostaResquest.setMessage("O "+time.getNome()+" ja esta cadastrado");
 		}
 		return respostaResquest;
 	}

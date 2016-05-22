@@ -22,11 +22,31 @@ angular.module('SimuladorCampeonato')
 	}
 		
 	$scope.CadastrarTime = function(){
-		var promise = TimeService.cadastrarTime($scope.time, $scope.idCampeonato);
-			promise.then(
-					function(response) {
-						$scope.respostaResquest = response.data;
-						});
+		if(validaTime()){
+			var promise = TimeService.cadastrarTime($scope.time, $scope.idCampeonato);
+				promise.then(
+						function(response) {
+							$scope.respostaResquest = response.data;
+							});
+				$scope.time={};
+		}
 	}	
+	
+	function validaTime(){
+		if($scope.idCampeonato == null || $scope.idCampeonato == 0){
+			$scope.respostaResquest.message = 'Campeonato e obrigatorio';
+			return false;
+		}
+		if($scope.time.nome == undefined || $scope.time.nome == ''){
+			$scope.respostaResquest.message = 'O nome do time e obrigatorio';
+			return false;
+		}
+		if($scope.time.cidade == undefined || $scope.time.cidade == ''){
+			$scope.respostaResquest.message = 'O nome da cidade e obrigatorio';
+			return false;
+		}
+		return true;
+		
+	}
 	
 });	

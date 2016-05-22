@@ -26,8 +26,10 @@
 			<label class="form-control" for="timeVisitante">Time Visitante: </label>
    			<select class="form-control" name="timeVisitante" id="timeVisitante" ng-model="partida.idTimeVisitante" placeholder="Time Visitante">
      			<option ng-repeat="time in times" value="{{time.id}}">{{time.nome}} - {{time.cidade}}</option>
-    		</select>
-			<input class="form-control" ng-model="partida.golsMandante" type="text" placeholder="Gol(s) Mandante"/>
+    		</select><br/>
+    		<label class="form-control">Gols Mandante: </label>
+    		<input class="form-control" ng-model="partida.golsMandante" type="text" placeholder="Gol(s) Mandante"/>
+			<label class="form-control">Gols Visitante: </label>
 			<input class="form-control" ng-model="partida.golsVisitante" type="text" placeholder="Gol(s) visitante"/>
 			<button class="btn btn-success btn-sm btn-block" ng-Click="cadastrarPartida()">Cadastrar Partida</button>	
 			<a  class="btn btn-danger btn-sm btn-block" href="/sim-camp/">voltar</a>

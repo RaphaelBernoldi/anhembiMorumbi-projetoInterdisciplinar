@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,19 +24,11 @@ public class TimeFacadeImpl implements TimeFacade {
 	
 	@Transactional
 	@Override
-	public Time save(Time time, Long idCampeonato) {
-		try{
-		
+	public Time save(Time time, Long idCampeonato) throws DataIntegrityViolationException{
 			Time timeSalvo = timeRepository.save(time);
 			campeonatoFacade.addTime(idCampeonato, timeSalvo);
 			return timeSalvo;
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
 	}
-	
 
 	@Override
 	@Transactional

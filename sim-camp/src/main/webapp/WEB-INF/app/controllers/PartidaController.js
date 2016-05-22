@@ -2,7 +2,7 @@ angular.module('SimuladorCampeonato')
 	.controller('PartidaController', function($scope, TimeService, PartidaService, CampeonatoService){	
 		
 	$scope.respostaResquest = {};
-	$scope.partida={timeMandante:"Selecione", timeVisitante:"Selecione"};
+	$scope.partida={};
 	$scope.times=[];
 	$scope.campeonatos=[];
 	$scope.idCampeonato=0;
@@ -13,7 +13,6 @@ angular.module('SimuladorCampeonato')
 	$scope.cadastrarPartida = function(){
 		var valido = validaPartidas();
 		if(valido){
-			console.log($scope.partida);
 		var promise = PartidaService.cadastrarPartida($scope.partida);
 			promise.then(function(response) {
 						$scope.respostaResquest = response.data;
@@ -54,8 +53,21 @@ angular.module('SimuladorCampeonato')
 	
 	
 	function validaPartidas(){
+		console.log($scope.partida);	
 		if($scope.partida.idTimeMandante == $scope.partida.idTimeVisitante){
 			$scope.respostaResquest.message = 'Os times devem ser diferentes';
+			return false;
+		}
+		if($scope.partida.idCampeonato == undefined || $scope.partida.idCampeonato == 0){
+			$scope.respostaResquest.message = 'O campo campeonato e obrigatorio';
+			return false;
+		}
+		if($scope.partida.golsMandante  == undefined  || $scope.partida.golsMandante < 0){
+			$scope.respostaResquest.message = 'Gols mandante deve ser igual ou maior que 0';
+			return false;
+		}
+		if($scope.partida.golsVisitante  == undefined || $scope.partida.golsVisitante < 0){
+			$scope.respostaResquest.message = 'Gols visitante deve ser igual ou maior que 0';
 			return false;
 		}
 		return true;
