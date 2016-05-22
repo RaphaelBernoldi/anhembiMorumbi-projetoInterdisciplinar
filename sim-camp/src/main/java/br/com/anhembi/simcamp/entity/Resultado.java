@@ -45,31 +45,31 @@ public class Resultado extends EntidadeGenerica implements Serializable  {
 		this.time = time;
 	}
 	public Integer getSaldoGols() {
-		return saldoGols;
+		return saldoGols == null ?0:saldoGols;
 	}
 	public void setSaldoGols(Integer saldoGols) {
 		this.saldoGols = saldoGols;
 	}
 	public Integer getPontos() {
-		return pontos;
+		return pontos == null ? 0 : pontos;
 	}
 	public void setPontos(Integer pontos) {
 		this.pontos = pontos;
 	}
 	public Integer getVitorias() {
-		return vitorias;
+		return vitorias == null ? 0 : vitorias;
 	}
 	public void setVitorias(Integer vitorias) {
 		this.vitorias = vitorias;
 	}
 	public Integer getDerrotas() {
-		return derrotas;
+		return derrotas == null ? 0 : derrotas;
 	}
 	public void setDerrotas(Integer derrotas) {
 		this.derrotas = derrotas;
 	}
 	public Integer getEmpates() {
-		return empates;
+		return empates == null ? 0 : empates;
 	}
 	public void setEmpates(Integer empates) {
 		this.empates = empates;

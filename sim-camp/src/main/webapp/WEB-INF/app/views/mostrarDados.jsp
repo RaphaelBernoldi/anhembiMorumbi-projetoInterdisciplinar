@@ -11,8 +11,8 @@
 	<h3>Colocação</h3>
 	
 	<label class="form-control" for="campeonato">Campeonato: </label>
-	<select class="form-control" name="campeonato" id="campeonato" ng-change="buscaResultadosPorCampeonado()"  ng-model="campeonato" placeholder="Campeonato">
-		<option ng-repeat="campeonato in campeonatos" value="{{campeonato}}">{{campeonato.nome}}</option>
+	<select class="form-control" name="campeonato" id="campeonato" ng-change="buscaResultadosPorCampeonado()"  ng-model="campeonatoID" placeholder="Campeonato">
+		<option ng-repeat="campeonato in campeonatos" value="{{campeonato.id}}">{{campeonato.nome}}</option>
 	</select><br/>
 	<table ng-show="resultados.length > 0" class="table table-striped table-bordered">
 		<tr>
@@ -24,12 +24,12 @@
 			<th>Saldo De Gols</th>
 		</tr>
 		<tr ng-repeat="resultado in resultados | orderBy:'-resultado*1'">
-			<td>{{resultado.pontuacao}}</td>
-			<td>{{resultado.nome}}</td>
+			<td>{{resultado.pontos}}</td>
+			<td>{{resultado.time.nome}}</td>
 			<td>{{resultado.vitorias}}</td>
 			<td>{{resultado.empates}}</td>
 			<td>{{resultado.derrotas}}</td>
-			<td>{{resultado.gols}}</td>
+			<td>{{resultado.saldoGols}}</td>
 		</tr>
 	</table>
 	<a class="btn btn-danger btn-sm btn-block" href="/sim-camp/">voltar</a>

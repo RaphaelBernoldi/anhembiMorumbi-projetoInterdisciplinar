@@ -14,6 +14,7 @@ import br.com.anhembi.simcamp.entity.Partida;
 import br.com.anhembi.simcamp.entity.Resultado;
 import br.com.anhembi.simcamp.entity.Time;
 import br.com.anhembi.simcamp.model.PartidaRequest;
+import br.com.anhembi.simcamp.model.constants.EnumStatusTimePartida;
 import br.com.anhembi.simcamp.repository.CampeonatoRepository;
 import br.com.anhembi.simcamp.repository.PartidaRepository;
 import br.com.anhembi.simcamp.repository.TimeRepository;
@@ -28,12 +29,11 @@ public class PartidaFacadeImpl implements PartidaFacade{
 	private CampeonatoRepository campeonatoRepository;
 	
 	@Resource
+	private ResultadoFacade resultadoFacade;
+	
+	@Resource
 	private TimeRepository timeRepository;
 	
-	private static final Integer CAMPEAO = 0;
-	private static final Integer PERDEDOR = 1;
-	private static final Integer EMPATE = 2;
-
 	@Override
 	@Transactional
 	public Partida save(PartidaRequest partidaRequest) {
@@ -50,47 +50,41 @@ public class PartidaFacadeImpl implements PartidaFacade{
 		
 	}
 	
-	private void atualizaResultados(final Partida partida,final List<Resultado>resultados){
+	@Override
+	@Transactional
+	public void atualizaResultados(final Partida partida,final List<Resultado>resultados){
 		
 		if(partida.getGolsMandante() >  partida.getGolsVisitante()){
-			preencheResultado(partida.getTimeMandante(), partida.getGolsMandante(), resultados, CAMPEAO);
-			preencheResultado(partida.getTimeVisitante(), partida.getGolsVisitante(), resultados, PERDEDOR);
+			preencheResultado(partida.getTimeMandante(), partida.getGolsMandante(), resultados, EnumStatusTimePartida.CAMPEAO);
+			preencheResultado(partida.getTimeVisitante(), partida.getGolsVisitante(), resultados, EnumStatusTimePartida.PERDEDOR);
 		}
 		
 		if(partida.getGolsMandante() < partida.getGolsVisitante()){
-			preencheResultado(partida.getTimeVisitante(), partida.getGolsVisitante(), resultados, CAMPEAO);
-			preencheResultado(partida.getTimeMandante(), partida.getGolsMandante(), resultados, PERDEDOR);
+			preencheResultado(partida.getTimeVisitante(), partida.getGolsVisitante(), resultados, EnumStatusTimePartida.CAMPEAO);
+			preencheResultado(partida.getTimeMandante(), partida.getGolsMandante(), resultados, EnumStatusTimePartida.PERDEDOR);
 		}
 		if(partida.getGolsMandante() == partida.getGolsVisitante()){
-			preencheResultado(partida.getTimeVisitante(), partida.getGolsMandante(), resultados, EMPATE);
-			preencheResultado(partida.getTimeMandante(), partida.getGolsMandante(), resultados, EMPATE);
+			preencheResultado(partida.getTimeVisitante(), partida.getGolsMandante(), resultados, EnumStatusTimePartida.EMPATE);
+			preencheResultado(partida.getTimeMandante(), partida.getGolsMandante(), resultados, EnumStatusTimePartida.EMPATE);
 
 		}
 	}
 	
-	private Resultado preencheResultado(Time time, Integer gols, List<Resultado>resultados, Integer status){
-		for (Resultado resultado : resultados) {
-			if(resultado.getTime().getId() == time.getId()){
-				resultado.setTime(time);
-				resultado.setSaldoGols(resultado.getSaldoGols() + gols);
-
-				if(status == CAMPEAO){
-					resultado.setVitorias(resultado.getVitorias() + 1);
-					resultado.setPontos(resultado.getPontos() + 3);
-
-				}
-				if(status == PERDEDOR){
-					resultado.setDerrotas(resultado.getDerrotas() + 1);
-
-				}
-				if(status == EMPATE){
-					resultado.setPontos(resultado.getPontos() + 1);
-					resultado.setEmpates(resultado.getEmpates() + 1);
-				}
-				return resultado;
+	@Override
+	@Transactional
+	public void preencheResultado(Time time, Integer gols, List<Resultado>resultados, EnumStatusTimePartida status){
+		
+		Resultado resultado = resultadoFacade.buscaResultadoDoTime(time, resultados);
+		if(resultado == null){
+			resultado = new Resultado();
+			resultadoFacade.atualizaPontos(resultado, gols, time, status);
+			Resultado resultadoSalvo = resultadoFacade.salva(resultado);
+			resultados.add(resultadoSalvo);
+			
+		}else{
+			resultadoFacade.atualizaPontos(resultado, gols, time, status);
 			}
-		}
-		return null;
+		
 	}
 	
 	

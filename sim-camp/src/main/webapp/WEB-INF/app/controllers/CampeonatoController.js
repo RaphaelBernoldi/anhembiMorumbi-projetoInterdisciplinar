@@ -5,6 +5,7 @@ angular.module('SimuladorCampeonato')
 	$scope.campeonato={};
 	$scope.campeonatos=[];
 	$scope.resultados=[];
+	$scope.campeonatoID=0;
 	
 	init();
 	
@@ -25,12 +26,11 @@ angular.module('SimuladorCampeonato')
 	}	
 	
 	$scope.buscaResultadosPorCampeonado = function(){
-		var promise = CampeonatoService.buscaResultadosPorCampeonado($scope.campeonato);
-		console.log($scope.campeonato);
+		var promise = CampeonatoService.buscaResultadosPorCampeonado($scope.campeonatoID);
 			promise.then(
 					function(response) {
-						console.log(response.data);
-						$scope.resultados = response.data;
+						console.log(response.data.lsObjetosEncontrados);
+						$scope.resultados = response.data.lsObjetosEncontrados;
 						});
 	}
 	
